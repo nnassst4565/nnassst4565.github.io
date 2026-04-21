@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Франшиза Салону Краси - Калінчук А.В.</title>
+    <style>
+        /* Стилізація сайту */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
+        header { text-align: center; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        nav button { padding: 10px 20px; cursor: pointer; border: none; background: #ff6f61; color: white; border-radius: 5px; font-weight: bold; transition: 0.3s; }
+        nav button:hover { background: #e65b50; }
+        .section { display: none; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .active { display: block; }
+        .calc-form { background: #f0f0f0; padding: 20px; border-radius: 8px; }
+        .result-box { margin-top: 20px; padding: 15px; background: #d4edda; border-left: 5px solid #28a745; display: none; }
+        footer { text-align: center; margin-top: 40px; font-size: 0.9em; color: #777; border-top: 1px solid #ccc; padding-top: 10px; }
+        a { color: #ff6f61; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Франшиза салону краси «Beauty Space» 💅</h1>
+    <p>Виконав студент: <strong>Калінчук А.В.</strong> | Група: <strong>ФЕМП 4-14</strong></p>
+</header>
+
+<nav>
+    <button onclick="showSection('home')">🏠 Головна</button>
+    <button onclick="showSection('conditions')">📜 Умови</button>
+    <button onclick="showSection('calculator')">🧮 Калькулятор</button>
+    <button onclick="showSection('about')">✨ Про нас</button>
+    <button onclick="showSection('contacts')">📞 Контакти</button>
+</nav>
+
+<main>
+    <section id="home" class="section active">
+        <h2>Ласкаво просимо!</h2>
+        <p>Станьте частиною успішного бізнесу в індустрії краси. Ми пропонуємо перевірену бізнес-модель, яка дозволить вам відкрити власний салон за лічені тижні.</p>
+        <p>На нашому сайті ви знайдете всю необхідну інформацію для старту та зможете розрахувати орієнтовні витрати.</p>
+    </section>
+
+    <section id="conditions" class="section">
+        <h2>Умови співпраці 🤝</h2>
+        <ul>
+            <li><strong>Паушальний внесок:</strong> 35 000 грн.</li>
+            <li><strong>Обладнання:</strong> 50 000 грн (базовий пакет).</li>
+            <li><strong>Термін окупності:</strong> від 6 до 10 місяців.</li>
+            <li><strong>Вимоги до приміщення:</strong> площа від 40 м², перша лінія.</li>
+        </ul>
+        <p>Ми забезпечуємо дизайн-проєкт, навчання майстрів та рекламну підтримку на старті.</p>
+    </section>
+
+    <section id="calculator" class="section">
+        <h2>Розрахунок стартового капіталу 💰</h2>
+        <div class="calc-form">
+            <p>Оберіть місто для розрахунку вартості оренди:</p>
+            <select id="citySelect" style="padding: 10px; width: 100%;">
+                <option value="kyiv">Київ (Коефіцієнт 1.2)</option>
+                <option value="odesa">Одеса (Коефіцієнт 1.0)</option>
+                <option value="cherkasy">Черкаси (Коефіцієнт 0.8)</option>
+            </select>
+            <br><br>
+            <button onclick="calculateTotal()" style="padding: 10px 20px; width: 100%; background: #28a745; color: white; border: none; border-radius: 5px;">Розрахувати витрати</button>
+        </div>
+        <div id="result" class="result-box"></div>
+    </section>
+
+    <section id="about" class="section">
+        <h2>Про нашу мережу ✨</h2>
+        <p>Ми розпочали свій шлях у 2020 році і за цей час відкрили понад 15 успішних точок. Наша місія — зробити професійний догляд доступним у кожному куточку країни.</p>
+        <p>Приєднуючись до нас, ви отримуєте не просто бренд, а професійну команду, яка вболіває за ваш успіх.</p>
+    </section>
+
+    <section id="contacts" class="section">
+        <h2>Контактна інформація 📞</h2>
+        <p>Менеджер: <strong>Калінчук А.В.</strong> (ФЕМП 4-14)</p>
+        <p>📸 Instagram: <a href="https://instagram.com/_nas__k__" target="_blank">@_nas__k__</a></p>
+        <p>✈️ Telegram: <a href="https://t.me/nnnast7029" target="_blank">@nnnast7029</a></p>
+        
+        <h3>Зворотний зв'язок</h3>
+        <input type="text" id="userName" placeholder="Ваше ім'я" style="padding: 10px; width: 95%; margin-bottom: 10px;">
+        <button onclick="sendFeedback()" style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px;">Замовити консультацію</button>
+        <p id="feedbackMsg" style="color: green; font-weight: bold; margin-top: 10px;"></p>
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 Всі права захищені. Виконав: Калінчук А.В., група ФЕМП 4-14</p>
+</footer>
+
+<script>
+    // Базові дані про франшизу
+    const franchiseData = {
+        baseRent: 25000,
+        fee: 35000,
+        equipment: 50000,
+        cities: {
+            kyiv: { name: "Київ", coef: 1.2 },
+            odesa: { name: "Одеса", coef: 1.0 },
+            cherkasy: { name: "Черкаси", coef: 0.8 }
+        }
+    };
+
+    // Функція перемикання розділів
+    function showSection(id) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+    }
+
+    // Розрахунок вартості
+    function calculateTotal() {
+        const cityKey = document.getElementById('citySelect').value;
+        const city = franchiseData.cities[cityKey];
+        
+        const finalRent = franchiseData.baseRent * city.coef;
+        const total = franchiseData.fee + franchiseData.equipment + finalRent;
+
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `
+            <strong>Результат для міста ${city.name}:</strong><br>
+            • Паушальний внесок: ${franchiseData.fee} грн<br>
+            • Обладнання: ${franchiseData.equipment} грн<br>
+            • Оренда приміщення: ${finalRent} грн<br>
+            <hr>
+            <strong>Загальна стартова сума: ${total} грн</strong>
+        `;
+    }
+
+    // Імітація форми
+    function sendFeedback() {
+        const name = document.getElementById('userName').value;
+        if(name) {
+            document.getElementById('feedbackMsg').innerText = `Дякуємо, ${name}! Ми зв'яжемося з вами найближчим часом.`;
+        } else {
+            alert("Будь ласка, введіть ваше ім'я.");
+        }
+    }
+</script>
+
+</body>
+</html>
